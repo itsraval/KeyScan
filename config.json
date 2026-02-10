@@ -1,0 +1,99 @@
+{
+	"ignore_folders": ["node_modules/", "vendor/", "Pods/", "bower_components/", "jspm_packages/", "dist/", "build/", "out/", "bin/", "obj/", "target/", "__pycache__/", ".venv/", "venv/", "env/", ".pytest_cache/", ".mypy_cache/", ".idea/", ".vscode/", ".vs/", ".git/", ".hg/", ".svn/", "coverage/", "htmlcov/", "reports/", ".gradle/", ".m2/", ".nuget/"],
+	"ignore_files": ["package-lock.json", "pnpm-lock.yaml"],
+	"ignore_extensions": [".zip", ".tar", ".gz", ".tgz", ".bz2", ".7z", ".rar", ".xz", ".iso", ".png", ".jpg", ".jpeg", ".gif", ".bmp", ".svg", ".ico", ".webp", ".mp3", ".wav", ".ogg", ".mp4", ".mkv", ".avi", ".mov", ".pdf", ".doc", ".docx", ".xls", ".xlsx", ".ppt", ".pptx", ".odt", ".ods", ".pem", ".key", ".crt", ".cer", ".pfx", ".p12", ".der", ".db", ".sqlite", ".sqlite3", ".mdb", ".dump", ".log", ".tmp", ".cache", ".coverage", ".swp", ".DS_Store", ".lock"],
+	"check_regex": [{
+		"name": "AWS Access Key",
+		"reg": "AKIA[0-9A-Z]{16}"
+	}, {
+		"name": "GitHub Token",
+		"reg": "(gh[ps]_[a-zA-Z0-9]{36}|github_pat_[a-zA-Z0-9]{22}_[a-zA-Z0-9]{59})"
+	}, {
+		"name": "OpenAI API Key",
+		"reg": " sk-[A-Za-z0-9]{40,}"
+	}, {
+		"name": "Google API Key",
+		"reg": "AIza[0-9A-Za-z\\-_]{35}"
+	}, {
+		"name": "Slack Token",
+		"reg": "xox[baprs]-[0-9a-zA-Z]{10,48}"
+	}, {
+		"name": "JWT",
+		"reg": "eyJ[A-Za-z0-9_-]+\\.[A-Za-z0-9_-]+\\.[A-Za-z0-9_-]+"
+	}, {
+		"name": "Generic API",
+		"reg": "[\"'](?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[A-Za-z0-9_\\-]{20,}[\"']"
+	}, {
+		"name": "Private Key",
+		"reg": "-----BEGIN (RSA|EC|DSA|OPENSSH) PRIVATE KEY-----"
+	}, {
+		"name": "Databse URL",
+		"reg": "(postgres|mysql|mongodb|redis)://[^@\\s]+:[^@\\s]+@[^@\\s]+"
+	}, {
+		"name": "Stripe",
+		"reg": "sk_live_[0-9a-zA-Z]{24}"
+	}, {
+		"name": "Stripe",
+		"reg": "rk_live_[0-9a-zA-Z]{24}"
+	}, {
+		"name": "Google OAuth",
+		"reg": "GOCSPX-[A-Za-z0-9_-]{20,}"
+	}],
+	"check_tags": [
+		"password",
+		"passwd",
+		"pwd",
+		"pass",
+		"secret",
+		"secret_key",
+		"private_key",
+		"api_key",
+		"apikey",
+		"apiKey",
+		"access_token",
+		"accessToken",
+		"auth_token",
+		"token",
+		"db_password",
+		"database_password",
+		"db_pass",
+		"username",
+		"user",
+		"login",
+		"email",
+		"key_id",
+		"access_key",
+		"session_token",
+		"client_id",
+		"auth",
+		"key",
+		"_url"
+	],
+	"assign_before_operators": [
+		"\\(define",
+		"\\(def",
+		"export"
+	],
+	"assign_after_operators": [
+		"=",
+		":=",
+		":",
+		"<-",
+		"EQU",
+		": string =",
+		":string =",
+		": string=",
+		":string="
+	],
+	"possible_quotes": [
+		"\"",
+		"'",
+		"`",
+		"@\"",
+		"r\"",
+		"r'",
+		"r#",
+		"\"\"\"",
+		""
+	]
+}
