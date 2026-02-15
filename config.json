@@ -10,7 +10,7 @@
 		"reg": "(gh[ps]_[a-zA-Z0-9]{36}|github_pat_[a-zA-Z0-9]{22}_[a-zA-Z0-9]{59})"
 	}, {
 		"name": "OpenAI API Key",
-		"reg": " sk-[A-Za-z0-9]{40,}"
+		"reg": "sk-[A-Za-z0-9]{40,}"
 	}, {
 		"name": "Google API Key",
 		"reg": "AIza[0-9A-Za-z\\-_]{35}"
@@ -22,7 +22,7 @@
 		"reg": "eyJ[A-Za-z0-9_-]+\\.[A-Za-z0-9_-]+\\.[A-Za-z0-9_-]+"
 	}, {
 		"name": "Generic API",
-		"reg": "[\"'](?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[A-Za-z0-9_\\-]{20,}[\"']"
+		"reg": "\\s(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[A-Za-z0-9_\\-]{20,}"
 	}, {
 		"name": "Private Key",
 		"reg": "-----BEGIN (RSA|EC|DSA|OPENSSH) PRIVATE KEY-----"
@@ -30,10 +30,10 @@
 		"name": "Databse URL",
 		"reg": "(postgres|mysql|mongodb|redis)://[^@\\s]+:[^@\\s]+@[^@\\s]+"
 	}, {
-		"name": "Stripe",
+		"name": "Stripe API Token sk",
 		"reg": "sk_live_[0-9a-zA-Z]{24}"
 	}, {
-		"name": "Stripe",
+		"name": "Stripe API Token rk",
 		"reg": "rk_live_[0-9a-zA-Z]{24}"
 	}, {
 		"name": "Google OAuth",
@@ -70,6 +70,7 @@
 		"_url"
 	],
 	"assign_before_operators": [
+		"#define",
 		"\\(define",
 		"\\(def",
 		"export"
