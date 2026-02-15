@@ -2,9 +2,6 @@ from utils import *
 import sys
 
 def main():
-	# maybe add from github or gitlab...
-	...
-	
 	if len(sys.argv) == 1:
 		print("Error! No input path found...")
 		return

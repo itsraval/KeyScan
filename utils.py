@@ -92,15 +92,21 @@ def scanTags(text, lineNumer):
 	text = text.lower()
 	matches = []
 	for tag in CHECK_TAGS:
+		new_match = None
 		for b in ASSIGN_BEFORE_OPERATORS:
 			match = re.search(f'{b}\\s*{tag}', text)
 			if match != None:
-				matches.append({"line": lineNumer, "match_type": f'{b}\\s*{tag}', 'match_tag': tag, "match": match.group()})
-		for a in ASSIGN_AFTER_OPERATORS:
-			for q in POSSIBLE_QUOTES:
-				match = re.search(f'{tag}\\s*{a}\\s*{q}', text)
-				if match != None:
-					matches.append({"line": lineNumer, "match_type": f'{tag}\\s*{a}\\s*{q}', 'match_tag': tag, "match": match.group()})
+				new_match = {"line": lineNumer, "match_type": f'{b}\\s*{tag}', 'match_tag': tag, "match": match.group()}
+				break
+		if new_match == None:
+			for a in ASSIGN_AFTER_OPERATORS:
+				for q in POSSIBLE_QUOTES:
+					match = re.search(f'{tag}\\s*{a}\\s*{q}', text)
+					if match != None:
+						new_match = {"line": lineNumer, "match_type": f'{tag}\\s*{a}\\s*{q}', 'match_tag': tag, "match": match.group()}
+						break
+		if new_match != None:
+			matches.append(new_match)
 	return matches
 
 def scanLine(text, lineNumer):
@@ -118,11 +124,3 @@ def scanLine(text, lineNumer):
 			found = True
 		print(f'\t{match}')
 	return (matchesR, matchesT)
-
-
-
-# Check if it contains a tag
-# Check if it contains a valid assignment operator
-# Check if a quoted value exists
-# Extract the value
-# Run heuristics (length, entropy)
