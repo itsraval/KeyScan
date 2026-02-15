@@ -63,7 +63,7 @@ python KeyScan.py backend frontend .env
 
 During scanning, KeyScan will:
 
-* Print progress per file and line
+* Print progress per file
 * List folders that were skipped
 * Report any detected matches with:
 
@@ -75,31 +75,38 @@ During scanning, KeyScan will:
 Example output:
 
 ```text
-Files found: 1
+=============INFO=============
+Files found: 3
 Folders not scanned: 0
-        []
 
 ===========SCANNING===========
-test.py -       1/1
-Line: 73/131
-        {'line': 73, 'match_type': 'password\\s*=\\s*"', 'match_tag': 'password', 'match': 'password = "'}
-Line: 121/131
-        {'line': 121, 'match_type': 'GitHub Token', 'match': 'ghp_FAKE1234567890abcdefghijklmnopqrstuv'}
-        {'line': 121, 'match_type': 'Generic API', 'match': '"ghp_FAKE1234567890abcdefghijklmnopqrstuvwxyz"'}
-        {'line': 121, 'match_type': 'token\\s*=\\s*"', 'match_tag': 'token', 'match': 'token="'}
-Line: 131/131
+C:\test\index.php   -       1/3
+C:\test\main.rs     -       2/3
+C:\test\script.py   -       3/3
 
-==============================
-Scan Completed!
-==============================
-Match found in: test.py
-File: test.py
-At line: 73
-        Tag found:      password = "
-At line: 121
-        Regex found:    GitHub Token - ghp_FAKE1234567890abcdefghijklmnopqrstuv
-        Regex found:    Generic API - "ghp_FAKE1234567890abcdefghijklmnopqrstuvwxyz"
-        Tag found:      token="
+===========RESULTS============
+Matches found for: C:\test\script.py
+FILENAME: script.py
+  Line: 5
+     Regex: Stripe API Token sk
+     Matched: sk_live_51NQpQwH8xYF3mZ7d9QkL2A6
+     Text: API_TOKEN = "sk_live_51NQpQwH8xYF3mZ7d9QkL2A6bEJpR0s"
+        -------
+     Matched: TOKEN = "
+     Text: API_TOKEN = "sk_live_51NQpQwH8xYF3mZ7d9QkL2A6bEJpR0s"
+        -------
+
+  Line: 18
+     Matched: #define pass
+     Text: #define pass 1234
+        -------
+
+  Line: 30
+     Regex: Stripe API Token sk
+     Matched: sk_live_51NQpQwH8xYF3mZ7d9QkL2A6
+     Text: quis nostrud exercitation sk_live_51NQpQwH8xYF3mZ7d9QkL2A6bEJpR0s ullamco laboris nisi ut aliquip ex ea commodo
+
+------------------
 =====
 ```
 
@@ -137,16 +144,6 @@ Always review results manually and rotate any exposed credentials immediately.
 
 ---
 
-## 🛣️ Roadmap / Ideas
-
-* GitHub / GitLab repository scanning
-* Entropy-based secret detection
-* JSON / YAML structured parsing
-* Pre-commit hook integration
-* Output to JSON / SARIF
-
----
-
 ## 🤝 Contributing
 
 Contributions are welcome!
@@ -163,4 +160,3 @@ Feel free to open an issue or submit a PR.
 ## 📜 License
 
 MIT License — do whatever you want, just don’t leak secrets 😉
-
