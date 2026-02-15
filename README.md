@@ -83,12 +83,10 @@ Folders not scanned: 0
 test.py -       1/1
 Line: 73/131
         {'line': 73, 'match_type': 'password\\s*=\\s*"', 'match_tag': 'password', 'match': 'password = "'}
-        {'line': 73, 'match_type': 'password\\s*=\\s*', 'match_tag': 'password', 'match': 'password = '}
 Line: 121/131
         {'line': 121, 'match_type': 'GitHub Token', 'match': 'ghp_FAKE1234567890abcdefghijklmnopqrstuv'}
         {'line': 121, 'match_type': 'Generic API', 'match': '"ghp_FAKE1234567890abcdefghijklmnopqrstuvwxyz"'}
         {'line': 121, 'match_type': 'token\\s*=\\s*"', 'match_tag': 'token', 'match': 'token="'}
-        {'line': 121, 'match_type': 'token\\s*=\\s*', 'match_tag': 'token', 'match': 'token='}
 Line: 131/131
 
 ==============================
@@ -98,12 +96,10 @@ Match found in: test.py
 File: test.py
 At line: 73
         Tag found:      password = "
-        Tag found:      password =
 At line: 121
         Regex found:    GitHub Token - ghp_FAKE1234567890abcdefghijklmnopqrstuv
         Regex found:    Generic API - "ghp_FAKE1234567890abcdefghijklmnopqrstuvwxyz"
         Tag found:      token="
-        Tag found:      token=
 =====
 ```
 
@@ -167,3 +163,4 @@ Feel free to open an issue or submit a PR.
 ## 📜 License
 
 MIT License — do whatever you want, just don’t leak secrets 😉
+
